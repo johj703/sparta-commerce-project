@@ -3,7 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 const NewProductList = async () => {
-  const res = await fetch("http://localhost:4000/products");
+  const res = await fetch("http://localhost:4000/products", {
+    cache: "force-cache",
+    next: {
+      tags: ["products"],
+    },
+  });
 
   const data: Product[] = await res.json();
 
